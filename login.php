@@ -10,11 +10,11 @@
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
         $password = hash(sha256, $_POST['password']);
-        $result = queryMySQL("SELECT username, password FROM users WHERE username = '$username' AND password = '$password'");
-        
+        $query = ("SELECT username, password FROM users WHERE username = '$username' AND password = '$password'");
+        $result = $conn->query($query);
 
         if(!$result) {
-            echo "Error", $result;
+            echo $result;
         }else{
             $_SESSION['user'] = $username;
             $_SESSION['password'] = $password;

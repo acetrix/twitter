@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+    require_once('db.php');
+    if(!isset($_SESSION['user'])) {
+        header("Location: login.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +17,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome, Home</h1>
+    <?php include('header.php'); ?>
+    <form method="post" action="send_tweets.php">
+    <fieldset>
+        <label for="tweet">What's happening?</label><br>
+        <textarea name="body" cols="50" rows="4"></textarea><br>
+        <input type="submit" value="Tweet"/>
+
+    </fieldset>
+    </form>
 </body>
 </html>
