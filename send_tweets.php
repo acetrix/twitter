@@ -14,6 +14,7 @@
     if(isset($_POST['body'])){
         $body = $_POST['body'];
     }
+    
     echo $body;
     $date = date('Y-m-d H:i:s');
     
