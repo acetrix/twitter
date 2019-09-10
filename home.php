@@ -12,10 +12,10 @@
     $post = $_POST['body'];
 
     if(isset($post) && $post != ''){
-        $body = $_POST['body'];
+        $post = $_POST['body'];
         $date = date('Y-m-d H:i:s');
     
-        $query1 = ("INSERT INTO tweets VALUES ('$user_id', '$user_id', '$body', '$date')");
+        $query1 = ("INSERT INTO tweets VALUES ('$user_id', '$user_id', '$post', '$date')");
         $result = $conn->query($query1);
     }
    

@@ -9,12 +9,14 @@
 
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
-        $password = hash(sha256, $_POST['password']);
+        $password = $_POST['password'];
         $query = ("SELECT username, password FROM users WHERE username = '$username' AND password = '$password'");
         $result = $conn->query($query);
 
-        if(!$result) {
-            echo $result;
+        
+        if($result->num_rows == 0) {
+            echo 'Error! Invalid Username/Password. Please try again!';
+           # header('Location: login.php');
         }else{
             $_SESSION['user'] = $username;
             $_SESSION['password'] = $password;
